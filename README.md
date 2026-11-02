@@ -6,7 +6,7 @@ LEMUR-Fuzz extends AFLNet with **LLM-generated, semantic-aware, protocol-specifi
 parse seed → semantic-aware field-level mutate → constraint fix → reassemble → send to server
 ```
 
-> **For Reproduction:** using the pre-built Docker images + RQ scripts — see [Reproducible experiments](#reproducible-experiments).
+> **For Reproduction:** the 12-implementation evaluation uses pre-built Docker images and RQ scripts distributed separately from this source repository; see [Reproducible experiments](#reproducible-experiments).
 
 ---
 
@@ -16,15 +16,16 @@ parse seed → semantic-aware field-level mutate → constraint fix → reassemb
 |------|------|---------|
 | `lemur-fuzz/` | LEMUR-Fuzz fuzzer (AFLNet + semantic-aware mutation stage) | [`lemur-fuzz/README.md`](lemur-fuzz/README.md) |
 | `components-generation/` | Pipeline to generate & check the LLM-generated components | [`components-generation/README.md`](components-generation/README.md) |
-| Prior eight-target Docker package (external) | Pre-built images + RQ/analysis scripts | [DOCKER_LINK](#docker-link) |
+| 12-implementation reproduction (external) | Pre-built images + RQ/analysis scripts | [Docker artifacts](#docker-artifacts) |
 
 This checkout covers 12 implementations of 10 protocols: MQTT (Mosquitto,
 NanoMQ), RTSP (live555), SIP (Kamailio), FTP (ProFTPD, Pure-FTPd), SMTP
 (Exim), DTLS 1.2 (TinyDTLS), DNS (dnsmasq), DICOM (DCMTK), TLS (OpenSSL), and
-SSH (OpenSSH). Source components for all twelve implementations are included
-here. Docker images and experiment scripts for the four latter implementations
-are distributed separately; the Zenodo package described below covers the
-first eight implementations only.
+SSH (OpenSSH). Source components for all 12 implementations are included here.
+Their Docker images and experiment scripts are distributed separately from
+this source repository. The existing Zenodo bundles cover the implementations
+listed below; the DNSmasq, DCMTK, OpenSSL, and OpenSSH images will be provided
+as separate archives.
 
 ```text
 lemur-fuzz-artifacts/
@@ -38,7 +39,11 @@ lemur-fuzz-artifacts/
 
 ## Reproducible experiments
 
-The Zenodo package reproduces all paper experiments **without rebuilding environments**: load the Docker images, run the RQ scripts, then run the analysis scripts to regenerate the paper's figures/tables. The full reproduction guide below is also shipped inside the Zenodo record.
+The 12-implementation evaluation uses pre-built Docker environments rather
+than requiring targets to be rebuilt. The linked Zenodo record currently
+contains the image bundles and scripts listed below. Separate archives for
+DNSmasq, DCMTK, OpenSSL, and OpenSSH will complete the 12-implementation
+reproduction package.
 
 The package includes: (1) README, (2) Two pre-built Docker image archive bundles containing all environments required to reproduce the experiments in the paper, including the targets, fuzzers, harnesses, and dependencies: **`Docker_Images_1.zip`** for `NanoMQ`, `ProFTPD`, `Pure-FTPd`, and `TinyDTLS`; and **`Docker_Images_2.zip`** for `Exim`, `Kamailio`, `Live555`, and `Mosquitto`, (3) `Execution_Scripts.tar.gz` (launch containers, run fuzzing, export `.tar.gz` artifacts), (4) `Analysis_Scripts.tar.gz` (regenerate plots/tables).
 
@@ -46,8 +51,9 @@ We evaluate 4 RQs; RQ1 has two endpoints (coverage + crashes), so there are 5 sc
 
 The workflow has two parts: **Run Experiments** (`run_experiments`): launch containers, run fuzzing, export `.tar.gz`; **Output Analysis** (`output_analysis`): extract results from each `.tar.gz` and compute/plot the paper's figures and tables.
 
-### Docker link
-- [DOCKER_LINK](https://zenodo.org/records/18375204)
+### Docker artifacts
+- [Existing image bundles and scripts](https://zenodo.org/records/18375204)
+- DNSmasq, DCMTK, OpenSSL, and OpenSSH image archives: to be provided separately.
 
 ### Preparation
 - Docker installed and running.

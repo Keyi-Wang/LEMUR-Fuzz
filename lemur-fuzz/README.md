@@ -168,5 +168,5 @@ unset HAVOC_OFF
 
 ## Detailed Experimental Setup
 
-For a fully reproducible, step-by-step setup (build instructions, runtime parameters, seeds, and target launch scripts), please refer to:
-- Pre-built Docker images: <[DOCKER_LINK](https://zenodo.org/records/18375204)>
+For the 12-implementation evaluation and the availability of its Docker
+artifacts, see the [repository reproduction guide](../README.md#reproducible-experiments).
