@@ -1,0 +1,14 @@
+{
+  "tls": {
+    "protocol": "TLS",
+    "primary_source": "RFC 5246: The Transport Layer Security (TLS) Protocol Version 1.2",
+    "local_file": "rfc5246.txt",
+    "url": "https://www.rfc-editor.org/rfc/rfc5246.txt"
+  },
+  "dicom": {
+    "protocol": "DICOM",
+    "primary_source": "DICOM PS3.8 2026d: Network Communication Support for Message Exchange",
+    "local_file": "dicom-ps3.8.html",
+    "url": "https://dicom.nema.org/medical/dicom/current/output/chtml/part08/PS3.8.html"
+  }
+}
